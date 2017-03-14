@@ -16,14 +16,6 @@
     margin: 0px;
 }
 
-
-
-h4 {
-    
-}
-
-
-
 .comments-identity {
     text-align: left;
     margin-top: 5px;
@@ -55,10 +47,6 @@ h4 {
 
 h5 {
     font-family: monospace;
-}
-
-.student-cards {
-    
 }
 
 .student-boxes {
@@ -106,7 +94,3 @@ h5 {
     font-size: 120%;
 }
 
-.italic {
-    font-style: italic;
-    font-size: 90%;
-}

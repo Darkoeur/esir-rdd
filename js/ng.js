@@ -54,6 +54,19 @@ app.controller("profilController", function($scope, $location, toastr){
     $scope.working = "This website is powered by Angular.";
     $scope.nom = 'GAUTRAIN';
     $scope.prenom = 'Antoine';
+    
+    $scope.searching = false;
+    
+    $scope.switchSearching = function(){
+        
+        $scope.searching = !$scope.searching;
+        
+        if($scope.searching){
+            document.querySelector('.content-row').style.transform = 'scale(0.8)';
+        } else {
+            document.querySelector('.content-row').style.transform = 'scale(1)';
+        }
+    };
 });
 
 app.controller("voidController", function($scope, $location, toastr){
