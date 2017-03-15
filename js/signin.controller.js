@@ -12,12 +12,16 @@ angular
         $scope.working = 'This website is powered by Angular.';
         
         $scope.submit = function(){
-            var result = Requests.signinUser(email.value, code.value);
+            var promise = Requests.signinUser(email.value, code.value);
             
             // Result object is a JSON with two components
             // - a boolean "success"
             // - a string "message"
             
-            Responses.display(result);
+            promise.then(function completed(it){
+                Responses.display(it);
+            }, function failed(it){
+                
+            });
         };
     }]);

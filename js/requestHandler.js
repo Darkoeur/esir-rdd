@@ -3,26 +3,31 @@
 
 angular
     .module('RequestHandler', [])
-    .factory('Requests', ['$http', function ($http) {
+    .factory('Requests', ['$http', '$q', function ($http, $q) {
         var requests = {};
         
         requests.signinUser = function (email, key) {
             // ajax call here
-            $http({
-                method: 'GET',
-                url: '/users/authenticate?email=' + email + '&key=' + key
-            }).then(function worked(response) {
-                // Just parsing, don't mind me
-                var ourResponse = JSON.parse(response);
-                console.log(ourResponse);
+            
+            var host = 'http://109.8.206.12:1337';
+            var defer = $q.defer();
+            
+            // $http.get is asynchronous
+            $http
+                .get(host + '/user/authenticate?email=' + email + '&key=' + key)
+                .then(function worked(response) {
                 
-            }, function failed(serverResponse) {
+                    // No need to parse, it's already an object
+                    defer.resolve(response.data);
                 
-                console.log(serverResponse.status);
-                var ourResponse = {};
-                ourResponse.success = false;
-                ourResponse.message = serverResponse.status + ' : ' + serverResponse.statusText;
-            });
+                }, function failed(serverResponse) {
+                
+                    console.log(serverResponse.status);
+                    var givenResponse = {};
+                    givenResponse.success = false;
+                    givenResponse.message = serverResponse.status + ' : ' + serverResponse.statusText;
+                    defer.resolve(givenResponse);
+                });
             
             
             /*
@@ -30,8 +35,7 @@ angular
                 var msg1 = {success:true, message:''};
                 var msg2 = {success:false, message:'No user found'};
             */
-            
-            return ourResponse;
+            return defer.promise;
         };
         
         return requests;

@@ -13,11 +13,11 @@ angular
         // The parameter 'response' is expected to contain
         // a boolean 'success' and a string 'message'
         responses.display = function (response) {
-            
+            console.log(response);
             if (!response.success) {
                 toastr.error('L\'action a échoué.<br/>' + response.message, 'Erreur', {allowHtml: true});
             } else {
-                toastr.success('Réussite', {allowHtml: true});
+                toastr.success('Réussite (' + response.message + ')');
             }
         };
         
