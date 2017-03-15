@@ -23,6 +23,13 @@
     font-family: 'Play', sans-serif;
     margin-left: 0px;
     padding-top: 50px;
+    opacity: 1;
+    
+}
+
+.search-bar.ng-hide {
+    opacity: 0;
+    transition: all linear 0.3s;
 }
 
 .search-input {
@@ -46,9 +53,9 @@
     box-shadow: -10px -10px gray;
     padding-top: 20px;
     padding-bottom: 30px;
-    font-family: 'Rubik Mono One', sans-serif;
+    font-family: 'Play', sans-serif;
     color: dimgray;
-    font-size: 60%;
+    font-size: 50%;
     width: 100%;
 }
 
