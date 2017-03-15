@@ -6,7 +6,7 @@
 
 angular
     .module('app')
-    .controller('homeController', function ($scope, $location, $timeout) {
+    .controller('homeController', ['$scope', '$location', '$timeout', function ($scope, $location, $timeout) {
         $scope.working = 'This website is powered by Angular.';
         $scope.year = 2017;
     
@@ -15,4 +15,4 @@ angular
         $timeout(function () {
             $location.path('/go');
         }, 2000);
-    });
+    }]);

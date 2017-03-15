@@ -8,6 +8,16 @@
 
 angular
     .module('app')
-    .controller('signinController', function($scope, $location, toastr){
+    .controller('signinController', ['$scope', '$location', 'toastr', 'Requests', 'Responses', function($scope, $location, toastr, Requests, Responses){
         $scope.working = 'This website is powered by Angular.';
-    });
+        
+        $scope.submit = function(){
+            var result = Requests.signinUser(email.value, code.value);
+            
+            // Result object is a JSON with two components
+            // - a boolean "success"
+            // - a string "message"
+            
+            Responses.display(result);
+        };
+    }]);

@@ -7,6 +7,6 @@
 
 angular
     .module('app')
-    .controller('voidController', function($scope, $location, toastr){
+    .controller('voidController', ['$scope', '$location', 'toastr', function($scope, $location, toastr){
         $scope.working = 'This website is powered by Angular.';
-    });
+    }]);

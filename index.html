@@ -27,7 +27,7 @@
     <body ng-app="app" class="container-fluid">
       
         <!-- Where will be included our contents -->
-        <div ng-view id="include"></div>
+        <div ng-view id="include" class="viewports"></div>
 
         
         
@@ -47,9 +47,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
         
-        <!-- my files -->
+        <!-- services (second is homemade while toastr can be found on github) -->
         <script src="js/angular-toastr.tpls.js"></script>
+        <script src="js/requestHandler.js"></script>
+        <script src="js/responseHandler.js"></script>
+        
+        <!-- the global module -->
         <script src="js/ng.js"></script>
+        
+        <!-- all the controllers, each one in a separated file -->
         <script src="js/home.controller.js"></script>
         <script src="js/signup.controller.js"></script>
         <script src="js/signin.controller.js"></script>
