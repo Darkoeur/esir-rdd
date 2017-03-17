@@ -13,11 +13,12 @@ angular
             
             var query = {
                 method: 'PUT',
-                url: host + '/user/register',
+                url: host + '/signup',
                 data: {prenom: prenom, nom: nom, email: email, specialite: specialite, code: code}
             };
             
             $http(query).then(function worked(response) {
+                // No need to parse, it's already an object
                 defer.resolve(response.data)
             }, function failed(serverResponse) {
                 var response = {};
@@ -37,21 +38,25 @@ angular
             var host = 'http://109.8.206.12:1337';
             var defer = $q.defer();
             
+            var query = {
+                method: 'PUT',
+                url: host + '/signin',
+                data: {email: email, code: key}
+            };
+            
             // $http.get is asynchronous
-            $http
-                .get(host + '/user/authenticate?email=' + email + '&key=' + key)
+            $http(query)
                 .then(function worked(response) {
                 
-                    // No need to parse, it's already an object
                     defer.resolve(response.data);
                 
                 }, function failed(serverResponse) {
                 
-                    console.log(serverResponse.status);
                     var givenResponse = {};
                     givenResponse.success = false;
                     givenResponse.message = 'Impossible de joindre le serveur';
                     defer.resolve(givenResponse);
+                
                 });
     
             return defer.promise;

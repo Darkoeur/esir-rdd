@@ -89,9 +89,25 @@
     </div>
 </div>
 
+<div ng-click="switchNavigating()" class="navigate-button"><i class="fa fa-bars fa-3x" aria-hidden="true"></i>
+</div>
 <div ng-click="switchSearching()" class="search-button"><i class="fa fa-search fa-3x" aria-hidden="true"></i>
 </div>
-<a href="#home"><div id="back-button" class="color-green"></div></a>
+<!--<a href="#home"><div id="back-button" class="color-green"></div></a>-->
+
+<!-- navigate menu view -->
+<div class="navigate-menu row col-xs-12" ng-show="navigating">
+    
+    <h3>Menu</h3>
+    <ul>
+        <a href="#home"><li>Accueil</li></a>
+        <a href="#go"><li>Inscription</li></a>
+        <a href="#connect"><li>Connexion</li></a>
+        <a ng-click="logout()"><li>Déconnexion</li></a>
+        
+        
+    </ul>
+</div>
 
 <!-- search view -->
 <div class="search-bar row col-xs-12" ng-show="searching">

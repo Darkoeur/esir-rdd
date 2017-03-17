@@ -8,7 +8,7 @@
 
 angular
     .module('app')
-    .controller('signinController', ['$scope', '$location', 'toastr', 'Requests', 'Responses', function($scope, $location, toastr, Requests, Responses) {
+    .controller('signinController', ['$rootScope', '$scope', '$location', '$sessionStorage', 'toastr', 'Requests', 'Responses', function($routeScope, $scope, $location, $sessionStorage, toastr, Requests, Responses) {
         $scope.working = 'This website is powered by Angular.';
         
         $scope.submit = function(){
@@ -20,6 +20,10 @@ angular
             
             promise.then(function resolved(result) {
                 Responses.display(result);
+                if (result.success) {
+                    $sessionStorage.token = result.token;
+                    $location.path('/profil');
+                }
                 
             }, function failed(result) {});
         };
