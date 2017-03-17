@@ -17,7 +17,7 @@ angular
             if (!response.success) {
                 toastr.error('L\'action a échoué.<br/>' + response.message, 'Erreur', {allowHtml: true});
             } else {
-                toastr.success('Réussite (' + response.message + ')');
+                toastr.success(response.message, 'Réussite');
             }
         };
         

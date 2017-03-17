@@ -8,7 +8,7 @@
 
 angular
     .module('app')
-    .controller('signinController', ['$scope', '$location', 'toastr', 'Requests', 'Responses', function($scope, $location, toastr, Requests, Responses){
+    .controller('signinController', ['$scope', '$location', 'toastr', 'Requests', 'Responses', function($scope, $location, toastr, Requests, Responses) {
         $scope.working = 'This website is powered by Angular.';
         
         $scope.submit = function(){
@@ -18,10 +18,9 @@ angular
             // - a boolean "success"
             // - a string "message"
             
-            promise.then(function completed(it){
-                Responses.display(it);
-            }, function failed(it){
+            promise.then(function resolved(result) {
+                Responses.display(result);
                 
-            });
+            }, function failed(result) {});
         };
     }]);

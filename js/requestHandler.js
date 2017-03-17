@@ -6,6 +6,31 @@ angular
     .factory('Requests', ['$http', '$q', function ($http, $q) {
         var requests = {};
         
+        // CREATING A NEW USER THANKS TO THE FORM FILLED
+        requests.signupUser = function (prenom, nom, specialite, email, code) {
+            var host = 'http://109.8.206.12:1337';
+            var defer = $q.defer();
+            
+            var query = {
+                method: 'PUT',
+                url: host + '/user/register',
+                data: {prenom: prenom, nom: nom, email: email, specialite: specialite, code: code}
+            };
+            
+            $http(query).then(function worked(response) {
+                defer.resolve(response.data)
+            }, function failed(serverResponse) {
+                var response = {};
+                response.success = false;
+                response.message = 'Impossible de joindre le serveur'
+            });
+                            
+                            
+            return defer.promise;
+        };
+        
+        
+        // SIGNIN A USER TO START THE AUTHENTICATION PROCESS
         requests.signinUser = function (email, key) {
             // ajax call here
             
@@ -25,16 +50,10 @@ angular
                     console.log(serverResponse.status);
                     var givenResponse = {};
                     givenResponse.success = false;
-                    givenResponse.message = serverResponse.status + ' : ' + serverResponse.statusText;
+                    givenResponse.message = 'Impossible de joindre le serveur';
                     defer.resolve(givenResponse);
                 });
-            
-            
-            /*
-                FAKE RESPONSES READY TO USE
-                var msg1 = {success:true, message:''};
-                var msg2 = {success:false, message:'No user found'};
-            */
+    
             return defer.promise;
         };
         

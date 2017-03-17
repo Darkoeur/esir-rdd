@@ -8,7 +8,7 @@
         <div class="form-group">
             <label for="prenom" class="col-sm-2 control-label">Prénom</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="prenom">
+                <input ng-model="prenom" type="text" class="form-control" id="prenom">
             </div>
         </div>
 
@@ -16,7 +16,7 @@
         <div class="form-group">
             <label for="nom" class="col-sm-2 control-label">Nom</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="nom">
+                <input ng-model="nom" type="text" class="form-control" id="nom">
             </div>
         </div>
 
@@ -24,7 +24,7 @@
         <div class="form-group">
             <label for="specialite" class="col-sm-2 control-label">Spécialité</label>
             <div class="col-sm-6 col-sm-offset-2">
-                <select class="form-control" id="specialite">
+                <select ng-model="specialite" class="form-control" id="specialite">
                     <option>Matériaux</option>
                     <option>Biomédical</option>
                     <option>Domotique</option>
@@ -39,7 +39,7 @@
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" placeholder="adresse@domaine.com">
+                <input ng-model="email" type="email" class="form-control" id="email" placeholder="adresse@domaine.com">
             </div>
         </div>
 
@@ -47,14 +47,14 @@
         <div class="form-group">
             <label for="code" class="col-sm-2 control-label">Code d'accès</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="code" maxlength="8">
+                <input ng-model="code" type="text" class="form-control" id="code" maxlength="8">
             </div>
         </div>
 
         <!-- Validation -->
         <div class="form-group">
             <div class="col-xs-12 col-sm-10 col-sm-offset-2">
-              <a href="#connect" class="action-buttons hvr-rectangle-out">S'INSCRIRE</a>
+              <a ng-click="create()" class="action-buttons hvr-rectangle-out">S'INSCRIRE</a>
             </div>
         </div>
     </form>
